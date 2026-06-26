@@ -1,3 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Welcome to Nicodemus Callanta's Profile Website");
-});
+const button =
+document.getElementById("theme-toggle");
+
+button.onclick = function(){
+
+document.body.classList.toggle("dark");
+
+};
