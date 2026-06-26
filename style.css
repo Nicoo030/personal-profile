@@ -174,3 +174,13 @@ body.dark .btn {
 body.dark .social-links a {
   color: #60a5fa;
 }
+
+.dark .card {
+    background: #2d2d2d;
+    color: white;
+}
+
+.dark .card h3,
+.dark .card p {
+    color: white;
+}
