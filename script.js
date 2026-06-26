@@ -1,16 +1,31 @@
-const button =
-document.getElementById("theme-toggle");
+const themeBtn = document.getElementById("theme-toggle");
 
-button.onclick = function(){
+themeBtn.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
 
-document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) {
+        themeBtn.innerHTML = "☀️ Light Mode";
+    } else {
+        themeBtn.innerHTML = "🌙 Dark Mode";
+    }
+});
 
-};
+function updateClock() {
+    const now = new Date();
 
-function updateClock(){
-const now = new Date();
-document.getElementById("datetime").innerHTML =
-now.toLocaleString();
+    const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    };
+
+    document.getElementById("datetime").innerHTML =
+        now.toLocaleString("en-US", options);
 }
-setInterval(updateClock,1000);
+
 updateClock();
+setInterval(updateClock, 1000);
