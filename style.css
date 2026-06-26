@@ -141,3 +141,31 @@ background:#000;
 background:#000;
 
 }
+
+.social-links{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+margin-top:25px;
+
+}
+
+.social-links a{
+
+font-size:40px;
+
+color:#2563eb;
+
+transition:.3s;
+
+}
+
+.social-links a:hover{
+
+transform:scale(1.2);
+
+}
