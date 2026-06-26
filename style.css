@@ -169,3 +169,12 @@ transition:.3s;
 transform:scale(1.2);
 
 }
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark p,
+.dark li,
+.dark a {
+    color: white;
+}
