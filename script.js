@@ -1,16 +1,41 @@
-const button =
-document.getElementById("theme-toggle");
+document.addEventListener("DOMContentLoaded", function () {
 
-button.onclick = function(){
+    const button = document.getElementById("theme-toggle");
 
-document.body.classList.toggle("dark");
+    // Restore saved theme
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        if (button) {
+            button.innerHTML = "☀️ Light Mode";
+        }
+    }
 
-};
+    // Theme toggle
+    if (button) {
+        button.addEventListener("click", function () {
+            document.body.classList.toggle("dark");
 
-function updateClock(){
-const now = new Date();
-document.getElementById("datetime").innerHTML =
-now.toLocaleString();
-}
-setInterval(updateClock,1000);
-updateClock();
+            if (document.body.classList.contains("dark")) {
+                button.innerHTML = "☀️ Light Mode";
+                localStorage.setItem("theme", "dark");
+            } else {
+                button.innerHTML = "🌙 Dark Mode";
+                localStorage.setItem("theme", "light");
+            }
+        });
+    }
+
+    // Live Clock
+    function updateClock() {
+        const now = new Date();
+        const clock = document.getElementById("datetime");
+
+        if (clock) {
+            clock.innerHTML = now.toLocaleString();
+        }
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+});
