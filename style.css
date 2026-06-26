@@ -113,3 +113,31 @@ font-size:16px;
 margin-top:15px;
 
 }
+
+.dark{
+
+background:#121212;
+
+color:white;
+
+}
+
+.dark section{
+
+background:#1f1f1f;
+
+color:white;
+
+}
+
+.dark nav{
+
+background:#000;
+
+}
+
+.dark footer{
+
+background:#000;
+
+}
