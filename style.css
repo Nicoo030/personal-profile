@@ -366,3 +366,50 @@ body.dark .social-links a {
 }
 
 }
+
+/* ===========================
+   Portfolio Layout
+=========================== */
+
+.portfolio-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.portfolio-text{
+    flex:2;
+}
+
+.portfolio-buttons{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    align-items:flex-end;
+}
+
+.portfolio-buttons .btn{
+    width:220px;
+    text-align:center;
+}
+
+@media(max-width:768px){
+
+.portfolio-content{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.portfolio-buttons{
+    width:100%;
+    align-items:stretch;
+}
+
+.portfolio-buttons .btn{
+    width:100%;
+}
+
+}
