@@ -38,4 +38,22 @@ document.addEventListener("DOMContentLoaded", function () {
     updateClock();
     setInterval(updateClock, 1000);
 
+    // Dynamic Greeting
+    function updateGreeting() {
+        const hour = new Date().getHours();
+        const greeting = document.getElementById("greeting");
+
+        if (!greeting) return;
+
+        if (hour < 12) {
+            greeting.innerHTML = "☀️ Good Morning!";
+        } else if (hour < 18) {
+            greeting.innerHTML = "🌤️ Good Afternoon!";
+        } else {
+            greeting.innerHTML = "🌙 Good Evening!";
+        }
+    }
+
+    updateGreeting();
+
 });
