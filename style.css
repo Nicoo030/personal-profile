@@ -184,3 +184,17 @@ body.dark .social-links a {
 .dark .card p {
     color: white;
 }
+
+#greeting{
+    text-align:center;
+}
+
+#greeting h3{
+    font-size:28px;
+    color:#2563eb;
+    margin-top:10px;
+}
+
+.dark #greeting h3{
+    color:#60a5fa;
+}
