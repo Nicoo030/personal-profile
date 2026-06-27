@@ -99,8 +99,8 @@ if (contactForm) {
         }
 
         formMessage.style.color = "green";
-        formMessage.innerHTML = "✅ Thank you! Your message has been received.";
-
+        formMessage.innerHTML =
+"✅ Thank you, " + name + "! Your message has been submitted successfully.";
         contactForm.reset();
 
     });
