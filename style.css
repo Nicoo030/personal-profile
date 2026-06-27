@@ -226,3 +226,49 @@ body.dark .social-links a {
     transform: scale(1.1);
     background:#1d4ed8;
 }
+
+/* ===== Contact Form ===== */
+
+#contact form{
+    max-width:600px;
+    margin:20px auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#contact input,
+#contact textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    font-family:Arial,sans-serif;
+}
+
+#contact textarea{
+    resize:vertical;
+}
+
+#contact button{
+    cursor:pointer;
+}
+
+#form-message{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+    color:green;
+}
+
+.dark #contact input,
+.dark #contact textarea{
+    background:#2d2d2d;
+    color:white;
+    border:1px solid #555;
+}
+
+.dark #contact input::placeholder,
+.dark #contact textarea::placeholder{
+    color:#bbb;
+}
