@@ -75,11 +75,12 @@ scrollBtn.addEventListener("click", function () {
 });
     
 // Contact Form Validation
+// Contact Form
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
 
-    contactForm.addEventListener("submit", function(event) {
+    contactForm.addEventListener("submit", function (event) {
 
         event.preventDefault();
 
@@ -90,18 +91,21 @@ if (contactForm) {
 
         const formMessage = document.getElementById("form-message");
 
-        if (name === "" || email === "" || subject === "" || message === "") {
-
+        if (!name || !email || !subject || !message) {
             formMessage.style.color = "red";
-            formMessage.innerHTML = "❌ Please fill in all fields.";
-
+            formMessage.textContent = "❌ Please fill in all fields.";
             return;
         }
 
         formMessage.style.color = "green";
-        formMessage.innerHTML =
-"✅ Thank you, " + name + "! Your message has been submitted successfully.";
+        formMessage.textContent =
+            "✅ Thank you, " + name + "! Your message has been submitted successfully.";
+
         contactForm.reset();
+
+        setTimeout(function () {
+            formMessage.textContent = "";
+        }, 5000);
 
     });
 
