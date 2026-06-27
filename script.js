@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dynamic Greeting
     function updateGreeting() {
         const hour = new Date().getHours();
-        const greeting = document.getElementById("greeting");
+        const greeting = document.getElementById("greeting-text");
 
         if (!greeting) return;
 
