@@ -1,5 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
+alert("Admin.js Version 5 Loaded");
+
 import {
     getFirestore,
     collection,
