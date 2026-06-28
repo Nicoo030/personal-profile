@@ -63,6 +63,10 @@ async function loadMessages() {
                 <p>${data.message}</p>
 
                 <hr>
+
+<button class="delete-btn" data-id="${doc.id}">
+    🗑 Delete Message
+</button>
             `;
 
             messagesDiv.appendChild(card);
