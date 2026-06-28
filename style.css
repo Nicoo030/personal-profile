@@ -483,3 +483,21 @@ body.dark #messages .card{
 body.dark .stats h3{
     color:#60a5fa;
 }
+
+/* Delete Button */
+
+.delete-btn{
+    margin-top:15px;
+    padding:10px 16px;
+    border:none;
+    border-radius:8px;
+    background:#dc2626;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+    font-size:15px;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
