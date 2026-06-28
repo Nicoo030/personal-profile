@@ -1,3 +1,5 @@
+import { db, collection, addDoc } from "./firebase.js";
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const button = document.getElementById("theme-toggle");
@@ -80,7 +82,7 @@ const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
 
-    contactForm.addEventListener("submit", function (event) {
+    contactForm.addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
@@ -97,12 +99,31 @@ if (contactForm) {
             return;
         }
 
-        formMessage.style.color = "green";
-        formMessage.textContent =
-            "✅ Thank you, " + name + "! Your message has been submitted successfully.";
+        try {
 
-        contactForm.reset();
+    await addDoc(collection(db, "messages"), {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+        createdAt: new Date()
+    });
 
+    formMessage.style.color = "green";
+    formMessage.innerHTML =
+        "✅ Thank you, " + name + "! Your message has been submitted successfully.";
+
+    contactForm.reset();
+
+} catch (error) {
+
+    formMessage.style.color = "red";
+    formMessage.innerHTML =
+        "❌ Error saving message.";
+
+    console.error(error);
+
+}
         setTimeout(function () {
             formMessage.textContent = "";
         }, 5000);
