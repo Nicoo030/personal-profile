@@ -32,21 +32,15 @@ async function loadMessages() {
 
     const querySnapshot = await getDocs(collection(db, "messages"));
 
-    // Update total messages
-    const totalMessages = document.getElementById("totalMessages");
-    totalMessages.textContent = querySnapshot.docs.length;
+    let count = 0;
 
-    if (querySnapshot.docs.length === 0) {
-        messagesDiv.innerHTML = "<p>No messages found.</p>";
-        return;
-    }
+    querySnapshot.forEach((doc) => {
 
-    querySnapshot.docs.forEach((doc) => {
+        count++;
 
         const data = doc.data();
 
         const card = document.createElement("div");
-
         card.className = "card";
 
         card.innerHTML = `
@@ -66,5 +60,7 @@ async function loadMessages() {
         messagesDiv.appendChild(card);
 
     });
+
+    document.getElementById("totalMessages").textContent = count;
 
 }
