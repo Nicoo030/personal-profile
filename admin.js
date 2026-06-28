@@ -37,7 +37,10 @@ async function loadMessages() {
         return;
     }
 
-    querySnapshot.forEach((doc) => {
+    document.getElementById("totalMessages").innerHTML =
+querySnapshot.size;
+
+querySnapshot.forEach((doc) => {
 
         const data = doc.data();
 
