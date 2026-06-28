@@ -61,6 +61,7 @@ async function loadMessages() {
 
     });
 
-    document.getElementById("totalMessages").textContent = count;
+    alert("Count = " + count);
+document.getElementById("totalMessages").textContent = count;
 
 }
