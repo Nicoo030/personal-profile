@@ -43,9 +43,9 @@ async function loadMessages() {
             return;
         }
 
-        snapshot.forEach((doc) => {
+        snapshot.forEach((document) => {
 
-            const data = doc.data();
+            const data = document.data();
 
             const card = document.createElement("div");
 
@@ -64,8 +64,8 @@ async function loadMessages() {
 
                 <hr>
 
-<button class="delete-btn" data-id="${doc.id}">
-    🗑 Delete Message
+<button class="delete-btn" data-id="${document.id}">
+    🗑 Delete this Message
 </button>
             `;
 
