@@ -1,7 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-alert("Admin.js Version 5 Loaded");
-
 import {
     getFirestore,
     collection,
@@ -75,9 +73,7 @@ async function loadMessages() {
 
             console.log("Button found:", card.querySelector(".delete-btn"));
 
-            card.querySelector(".delete-btn").addEventListener("click", () => {
-    alert("Delete button clicked!");
-});
+            card.querySelector(".delete-btn").addEventListener("click", async () => {
 
     const confirmDelete = confirm(
         "Are you sure you want to delete this message?"
@@ -85,12 +81,13 @@ async function loadMessages() {
 
     if (!confirmDelete) return;
 
-    await deleteDoc(doc(db, "messages", card.querySelector(".delete-btn").dataset.id));
+    const id = card.querySelector(".delete-btn").dataset.id;
+
+    await deleteDoc(doc(db, "messages", id));
 
     loadMessages();
 
 });
-
         });
 
     } catch (error) {
