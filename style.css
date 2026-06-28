@@ -413,3 +413,73 @@ body.dark .social-links a {
 }
 
 }
+
+/* ==========================
+   ADMIN DASHBOARD
+========================== */
+
+.stats{
+    display:flex;
+    gap:20px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+
+.stats .card{
+    flex:1;
+    min-width:200px;
+    text-align:center;
+    padding:20px;
+}
+
+.stats h3{
+    margin-bottom:10px;
+    color:#2563eb;
+}
+
+.stats p{
+    font-size:32px;
+    font-weight:bold;
+}
+
+#messages{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+#messages .card{
+    border-left:6px solid #2563eb;
+    padding:20px;
+    transition:.3s;
+}
+
+#messages .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+#messages h3{
+    margin-bottom:15px;
+}
+
+#messages p{
+    margin:8px 0;
+    line-height:1.6;
+}
+
+#messages hr{
+    margin-top:15px;
+    border:none;
+    border-top:1px solid #ddd;
+}
+
+body.dark .stats .card,
+body.dark #messages .card{
+    background:#2d2d2d;
+    color:white;
+}
+
+body.dark .stats h3{
+    color:#60a5fa;
+}
