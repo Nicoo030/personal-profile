@@ -65,7 +65,7 @@ async function loadMessages() {
                 <hr>
 
 <button class="delete-btn" data-id="${document.id}">
-    🗑 Delete this Message
+    🗑 Delete Message
 </button>
             `;
 
