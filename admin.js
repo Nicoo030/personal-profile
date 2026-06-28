@@ -71,7 +71,11 @@ async function loadMessages() {
 
             messagesDiv.appendChild(card);
 
-            card.querySelector(".delete-btn").addEventListener("click", async () => {
+            console.log("Button found:", card.querySelector(".delete-btn"));
+
+            card.querySelector(".delete-btn").addEventListener("click", () => {
+    alert("Delete button clicked!");
+});
 
     const confirmDelete = confirm(
         "Are you sure you want to delete this message?"
