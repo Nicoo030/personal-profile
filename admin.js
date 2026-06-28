@@ -30,12 +30,7 @@ async function loadMessages() {
 
     messagesDiv.innerHTML = "";
 
-    const q = query(
-        collection(db, "messages"),
-        orderBy("createdAt", "desc")
-    );
-
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(collection(db, "messages"));
 
     if (querySnapshot.empty) {
         messagesDiv.innerHTML = "<p>No messages found.</p>";
