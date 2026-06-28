@@ -3,9 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
     getFirestore,
     collection,
-    getDocs,
-    query,
-    orderBy
+    getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // Firebase Configuration
@@ -24,44 +22,60 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const messagesDiv = document.getElementById("messages");
+const totalMessages = document.getElementById("totalMessages");
 
-// Load Messages
 async function loadMessages() {
 
-    messagesDiv.innerHTML = "";
+    try {
 
-    const querySnapshot = await getDocs(collection(db, "messages"));
+        messagesDiv.innerHTML = "<p>Loading messages...</p>";
 
-    let count = 0;
+        const snapshot = await getDocs(collection(db, "messages"));
 
-    querySnapshot.forEach((doc) => {
+        messagesDiv.innerHTML = "";
 
-        count++;
+        totalMessages.textContent = snapshot.docs.length;
 
-        const data = doc.data();
+        if (snapshot.empty) {
+            messagesDiv.innerHTML = "<p>No messages found.</p>";
+            return;
+        }
 
-        const card = document.createElement("div");
-        card.className = "card";
+        snapshot.forEach((doc) => {
 
-        card.innerHTML = `
-            <h3>👤 ${data.name}</h3>
+            const data = doc.data();
 
-            <p><strong>📧 Email:</strong> ${data.email}</p>
+            const card = document.createElement("div");
 
-            <p><strong>📌 Subject:</strong> ${data.subject}</p>
+            card.className = "card";
 
-            <p><strong>💬 Message:</strong></p>
+            card.innerHTML = `
+                <h3>👤 ${data.name}</h3>
 
-            <p>${data.message}</p>
+                <p><strong>📧 Email:</strong> ${data.email}</p>
 
-            <hr>
-        `;
+                <p><strong>📌 Subject:</strong> ${data.subject}</p>
 
-        messagesDiv.appendChild(card);
+                <p><strong>💬 Message:</strong></p>
 
-    });
+                <p>${data.message}</p>
 
-    alert("Count = " + count);
-document.getElementById("totalMessages").textContent = count;
+                <hr>
+            `;
+
+            messagesDiv.appendChild(card);
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        messagesDiv.innerHTML =
+        "<p style='color:red;'>Error loading messages.</p>";
+
+    }
 
 }
+
+loadMessages();
