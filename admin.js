@@ -71,6 +71,20 @@ async function loadMessages() {
 
             messagesDiv.appendChild(card);
 
+            card.querySelector(".delete-btn").addEventListener("click", async () => {
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this message?"
+    );
+
+    if (!confirmDelete) return;
+
+    await deleteDoc(doc(db, "messages", card.querySelector(".delete-btn").dataset.id));
+
+    loadMessages();
+
+});
+
         });
 
     } catch (error) {
