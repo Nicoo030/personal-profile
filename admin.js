@@ -1,3 +1,6 @@
+console.log("ADMIN.JS VERSION 9");
+alert("ADMIN.JS VERSION 9");
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
