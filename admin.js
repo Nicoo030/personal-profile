@@ -1,5 +1,3 @@
-alert("ADMIN JS VERSION 100");
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
@@ -10,7 +8,7 @@ import {
     doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Firebase Config
+// Firebase Configuration
 const firebaseConfig = {
     apiKey: "AIzaSyC-yVKL8X9AyNXV3CjqcG6OlZPMMJCTg0c",
     authDomain: "nico-portfolio-67aa2.firebaseapp.com",
@@ -21,11 +19,10 @@ const firebaseConfig = {
     measurementId: "G-FQS5LC69HD"
 };
 
-// Init Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Elements
 const messagesDiv = document.getElementById("messages");
 const totalMessages = document.getElementById("totalMessages");
 
@@ -47,55 +44,72 @@ async function loadMessages() {
             return;
         }
 
-        snapshot.forEach((document) => {
+        snapshot.forEach((messageDoc) => {
 
-            const data = document.data();
+            const data = messageDoc.data();
 
             const card = document.createElement("div");
             card.className = "card";
 
             card.innerHTML = `
-                <h3>👤 ${data.name}</h3>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Subject:</strong> ${data.subject}</p>
-                <p><strong>Message:</strong></p>
-                <p>${data.message}</p>
+                <h3>👤 ${data.name ?? "No Name"}</h3>
+
+                <p><strong>📧 Email:</strong> ${data.email ?? "-"}</p>
+
+                <p><strong>📌 Subject:</strong> ${data.subject ?? "-"}</p>
+
+                <p><strong>💬 Message:</strong></p>
+
+                <p>${data.message ?? "-"}</p>
+
                 <hr>
-                <button class="delete-btn">🗑 Delete Message</button>
+
+                <button class="delete-btn">
+                    🗑 Delete Message
+                </button>
             `;
 
             const deleteBtn = card.querySelector(".delete-btn");
 
             deleteBtn.addEventListener("click", async () => {
 
-                const confirmDelete = confirm("Delete this message?");
+                const confirmDelete = confirm(
+                    "Are you sure you want to delete this message?"
+                );
 
                 if (!confirmDelete) return;
 
                 try {
-                    await deleteDoc(doc(db, "messages", document.id));
+
+                    await deleteDoc(doc(db, "messages", messageDoc.id));
+
                     loadMessages();
+
                 } catch (error) {
-                    alert("Error deleting message: " + error.message);
+
+                    alert("Delete failed: " + error.message);
+
+                    console.error(error);
+
                 }
 
             });
 
             messagesDiv.appendChild(card);
+
         });
 
     } catch (error) {
 
-    console.error(error);
+        console.error(error);
 
-    messagesDiv.innerHTML = `
-        <h2 style="color:red;">Error Loading Messages</h2>
-        <p>${error.name}</p>
-        <p>${error.message}</p>
-        <pre>${error.stack}</pre>
-    `;
+        messagesDiv.innerHTML = `
+            <h3 style="color:red;">Error Loading Messages</h3>
+            <p>${error.message}</p>
+        `;
 
-}
+    }
+
 }
 
 loadMessages();
