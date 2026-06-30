@@ -83,10 +83,17 @@ async function loadMessages() {
         });
 
     } catch (error) {
-        console.error(error);
-        messagesDiv.innerHTML =
-            "<p style='color:red;'>Error loading messages</p>";
-    }
+
+    console.error(error);
+
+    messagesDiv.innerHTML = `
+        <h2 style="color:red;">Error Loading Messages</h2>
+        <p>${error.name}</p>
+        <p>${error.message}</p>
+        <pre>${error.stack}</pre>
+    `;
+
+}
 }
 
 loadMessages();
